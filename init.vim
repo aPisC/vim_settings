@@ -7,11 +7,28 @@ call plug#begin()
   Plug 'junegunn/fzf.vim'
   Plug 'michaeljsmith/vim-indent-object'
 
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
   Plug 'junegunn/goyo.vim'
   Plug 'preservim/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'ryanoasis/vim-devicons'
+
+  Plug 'ghifarit53/tokyonight-vim'
 call plug#end()
+
+set termguicolors
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 0
+let g:tokyonight_transparent_background = 1
+hi LineNr guibg=#232433
+
+
+colorscheme tokyonight
+let g:airline_theme = "tokyonight"
+
+filetype indent plugin on
+syntax enable
 
 set nu rnu
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro rnu'
@@ -23,6 +40,17 @@ set expandtab
 
 " Disable wrapping
 set nowrap
+
+" CoC configuration
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <Esc> coc#pum#visible() ? coc#pum#cancel() : "<Esc>"
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " Fuzzy finder
 nnoremap <C-p> :Files<CR>
