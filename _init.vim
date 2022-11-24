@@ -8,6 +8,8 @@ call plug#begin()
   Plug 'michaeljsmith/vim-indent-object'
 
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neovim/nvim-lspconfig'
+  " Plug 'OmniSharp/omnisharp-vim'
 
   Plug 'junegunn/goyo.vim'
   Plug 'preservim/nerdtree'
@@ -21,14 +23,11 @@ set termguicolors
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 0
 let g:tokyonight_transparent_background = 1
-hi LineNr guibg=#232433
-
 
 colorscheme tokyonight
 let g:airline_theme = "tokyonight"
+hi LineNr guibg=#232433
 
-filetype indent plugin on
-syntax enable
 
 set nu rnu
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro rnu'
