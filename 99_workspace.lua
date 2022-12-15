@@ -6,10 +6,5 @@ function file_exists(name)
 end
 
 if file_exists(workspaceInitFile) then
-
-  -- vim.api.nvim_create_autocmd("VimEnter", {
-  --   pattern = { "*" },
-  --   callback = function() dofile(workspaceInitFile) end,
-  -- })
   dofile(workspaceInitFile) 
 end
