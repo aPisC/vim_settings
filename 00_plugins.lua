@@ -37,6 +37,8 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   Plug 'rafamadriz/friendly-snippets'
   Plug 'mfussenegger/nvim-dap'
   Plug 'rcarriga/nvim-dap-ui'
+  Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'folke/trouble.nvim'
 
   -- Scala lang plugin
   Plug 'scalameta/nvim-metals'

@@ -12,9 +12,16 @@ local workspaceFiles = {
     --     name = "RunOrTest",
     --     metals = {
     --       runType = "runOrTestFile",
-    --       --args = { "firstArg", "secondArg", "thirdArg" }, -- here just as an example
+    --       --args = { "firstArg", "secondArg", "thirdArg" },
     --     },
     --   },
+    -- }
+
+    -- Override scalafmt config
+    -- vim.g.neoformat_scala_scalafmt = {
+    --   ['exe' ]= 'scalafmt',
+    --   ['args' ]= { '--stdin', '-c', 'path/to/.scalafmt.conf'},
+    --   ['stdin' ]= 1,
     -- }
   ]],
 }

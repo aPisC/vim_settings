@@ -16,6 +16,13 @@
            fallback()
          end
        end,
+       ["<Esc>"] = function(fallback)
+         if cmp.visible() then
+           cmp.close()
+         else
+           fallback()
+         end
+       end,
        ["<S-Tab>"] = function(fallback)
          if cmp.visible() then
            cmp.select_prev_item()
@@ -24,9 +31,6 @@
          end
        end,
       ['<C-Space>'] = cmp.mapping.complete(),
-      -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      -- ['<C-e>'] = cmp.mapping.abort(),
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
