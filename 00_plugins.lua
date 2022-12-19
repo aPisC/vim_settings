@@ -12,6 +12,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'michaeljsmith/vim-indent-object'
   Plug 'sbdchd/neoformat'
+  Plug 'ThePrimeagen/harpoon'
 
   -- Theme and ui
   Plug 'ghifarit53/tokyonight-vim'

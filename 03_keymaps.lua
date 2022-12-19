@@ -1,15 +1,6 @@
 local keyset = vim.keymap.set
 local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
 
-
--- Fzf keymaps
-keyset('n', '<c-p>', ':Telescope buffers<cr>')
-keyset('i', '<c-p>', '<esc>:Telescope buffers<cr>')
-keyset('n', '<c-p><c-p>', ':Telescope find_files<cr>')
-keyset('i', '<c-p><c-p>', '<esc>:Telescope find_files<cr>')
-keyset('n', '<c-p><c-p><c-p>', ':Telescope commands<cr>')
-keyset('i', '<c-p><c-p><c-p>', '<esc>:Telescope commands<cr>')
-
 -- NERDTree keymap
 keyset('n', '<c-b>', ':NERDTreeToggle <cr>')
 keyset('i', '<c-b>', '<esc>:NERDTreeToggle <cr>')
