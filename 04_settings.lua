@@ -6,3 +6,4 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.wrap = false
 vim.opt.equalalways = false
+vim.cmd("let NERDTreeShowHidden=1")

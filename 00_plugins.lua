@@ -1,10 +1,11 @@
 local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim/plugged')
   -- Deps
+  Plug('nvim-telescope/telescope.nvim', { ['tag']= '0.1.0' })
   Plug 'nvim-lua/plenary.nvim'
+  Plug 'akinsho/toggleterm.nvim'
 
   -- Editor plugins    
-  Plug('nvim-telescope/telescope.nvim', { ['tag']= '0.1.0' })
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
@@ -13,6 +14,8 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   Plug 'michaeljsmith/vim-indent-object'
   Plug 'sbdchd/neoformat'
   Plug 'ThePrimeagen/harpoon'
+  Plug 'jedrzejboczar/toggletasks.nvim'
+  Plug 'mbbill/undotree'
 
   -- Theme and ui
   Plug 'ghifarit53/tokyonight-vim'

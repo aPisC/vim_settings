@@ -32,8 +32,8 @@ function init_workspace(arg)
     print("Config " .. lang .. " does not exist")
     return
   end
-  os.execute("mkdir -p ./.vim")
-  local file = io.open("./.vim/init.lua", "a+")
+  os.execute("mkdir -p ./.vscode")
+  local file = io.open("./.vim/nvim.lua", "a+")
   file:write("-- Insert " .. lang .. " configuration\n")
   file:write(workspaceFiles[lang])
   file:write("\n\n\n")
