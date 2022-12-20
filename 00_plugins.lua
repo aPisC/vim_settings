@@ -16,6 +16,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   Plug 'ThePrimeagen/harpoon'
   Plug 'jedrzejboczar/toggletasks.nvim'
   Plug 'mbbill/undotree'
+  Plug 'TimUntersberger/neogit'
 
   -- Theme and ui
   Plug 'ghifarit53/tokyonight-vim'

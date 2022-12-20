@@ -20,6 +20,7 @@ vim.keymap.set({'n', 'i', 't'}, '<c-p>a', function() vim.cmd('Telescope find_fil
 vim.keymap.set({'n', 'i', 't'}, '<c-p>c', function() vim.cmd('Telescope commands') end)
 vim.keymap.set({'n', 'i', 't'}, '<c-p>e', function() vim.cmd('Telescope diagnostics') end)
 vim.keymap.set({'n'          }, '<c-p>u', function() vim.cmd('UndotreeToggle') end)
+vim.keymap.set({'n', 'i', 't'}, '<c-p>g', function() require("neogit").open({kind="tab"})  end)
 vim.keymap.set({'n', 'i', 't'}, '<c-p>gc', function() vim.cmd('Telescope git_commits') end)
 vim.keymap.set({'n', 'i', 't'}, '<c-p>gb', function() vim.cmd('Telescope git_branches') end)
 
