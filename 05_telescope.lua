@@ -19,15 +19,15 @@ vim.keymap.set({'n', 'i', 't'}, '<c-p>f', function() vim.cmd('Telescope git_file
 vim.keymap.set({'n', 'i', 't'}, '<c-p>a', function() vim.cmd('Telescope find_files') end)
 vim.keymap.set({'n', 'i', 't'}, '<c-p>c', function() vim.cmd('Telescope commands') end)
 vim.keymap.set({'n', 'i', 't'}, '<c-p>e', function() vim.cmd('Telescope diagnostics') end)
-vim.keymap.set({'n'          }, '<c-p>u', function() vim.cmd('UndotreeToggle') end)
 vim.keymap.set({'n', 'i', 't'}, '<c-p>g', function() require("neogit").open({kind="tab"})  end)
 vim.keymap.set({'n', 'i', 't'}, '<c-p>gc', function() vim.cmd('Telescope git_commits') end)
 vim.keymap.set({'n', 'i', 't'}, '<c-p>gb', function() vim.cmd('Telescope git_branches') end)
-
--- Open tasks
-vim.keymap.set({'n', 'i'}, "<C-p>b", function() vim.cmd("Telescope toggletasks spawn") end)
-
--- Open terminal
+vim.keymap.set({'n', 'i', 't'}, "<C-p>b", function() vim.cmd("Telescope toggletasks spawn") end)
+vim.keymap.set({'n', 'i', 't'}, "<C-p>bb", function() vim.cmd("Telescope toggletasks select") end)
 vim.keymap.set({'n', 'i', 't'}, "<C-p>t", function() vim.cmd("ToggleTerm") end)
+
+
+vim.keymap.set({'n'          }, '<c-p>u', function() vim.cmd('UndotreeToggle') end)
+vim.keymap.set({'n'          }, '<c-p>x', function() vim.cmd('q') end)
 
 
