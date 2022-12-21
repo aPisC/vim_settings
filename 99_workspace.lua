@@ -13,3 +13,7 @@ end
 if file_exists(vscodeLaunchFile) then
   require("dap.ext.vscode").load_launchjs(vscodeLaunchFile) 
 end
+
+vim.cmd("autocmd VimEnter * ToggleTerm size=5")
+vim.cmd("autocmd VimEnter * NERDTree")
+vim.cmd("autocmd VimEnter * wincmd l")

@@ -8,7 +8,15 @@
     },
     window = { },
     mapping = cmp.mapping.preset.insert({
-       ["<CR>"] = cmp.mapping.confirm({ select = true }),
+       -- ["<CR>"] = cmp.mapping.confirm({ select = true }),
+       ["<CR>"] = function(fallback)
+         if cmp.visible() then
+           cmp.confirm()
+           cmp.close()
+         else
+           fallback()
+         end
+       end,
        ["<Tab>"] = function(fallback)
          if cmp.visible() then
            cmp.select_next_item()

@@ -14,7 +14,7 @@ vim.keymap.set({'n', 'i', 't'}, '<c-p>gb', function() vim.cmd('Telescope git_bra
 vim.keymap.set({'n', 'i', 't'}, "<C-p>b", function() vim.cmd("Telescope toggletasks spawn") end)
 vim.keymap.set({'n', 'i', 't'}, "<C-p>bb", function() vim.cmd("Telescope toggletasks select") end)
 
-vim.keymap.set({'n', 'i', 't'}, "<C-p>t", function() vim.cmd("ToggleTerm") end)
+vim.keymap.set({'n', 'i', 't'}, "<C-p>t", function() if vim.v.count > 0 then vim.cmd("ToggleTerm " .. vim.v.count) else vim.cmd("ToggleTerm") end end)
 vim.keymap.set({'n', 'i', 't'}, '<c-p>g', function() require("neogit").open({kind="tab"})  end)
 vim.keymap.set({'n'          }, '<c-p>u', function() vim.cmd('UndotreeToggle') end)
 vim.keymap.set({'n', 'i', 't'}, '<c-b>', function() vim.cmd('NERDTreeToggle') end)

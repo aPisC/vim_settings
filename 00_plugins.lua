@@ -54,4 +54,6 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   Plug 'jceb/vim-orgmode'
 vim.call('plug#end')
 
-require("toggleterm").setup()
+require("toggleterm").setup({
+  start_in_insert = false
+})
