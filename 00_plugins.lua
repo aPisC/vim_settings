@@ -42,6 +42,8 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   Plug 'rafamadriz/friendly-snippets'
   Plug 'mfussenegger/nvim-dap'
   Plug 'rcarriga/nvim-dap-ui'
+  Plug('mxsdev/nvim-dap-vscode-js')
+  Plug('microsoft/vscode-js-debug', {['do'] = "npm install --legacy-peer-deps && npm run compile"})
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'folke/trouble.nvim'
 
@@ -51,3 +53,5 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   -- Org language plugins
   Plug 'jceb/vim-orgmode'
 vim.call('plug#end')
+
+require("toggleterm").setup()
