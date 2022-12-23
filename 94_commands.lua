@@ -6,4 +6,7 @@ vim.api.nvim_create_user_command('HarpoonClear', function() require("harpoon.mar
 -- LSP
 vim.api.nvim_create_user_command('LspFormat', function() vim.lsp.buf.format { async = false } end, {})
 -- vim.api.nvim_create_autocmd({"CursorHold"}, { pattern = {"*"}, callback=vim.lsp.buf.hover })
+--
+-- REST
+vim.api.nvim_create_user_command('RestRun', function() require("rest-nvim").run() end, {})
 

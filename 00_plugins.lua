@@ -2,6 +2,7 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim/plugged')
   -- Deps
   Plug('nvim-telescope/telescope.nvim', { ['tag']= '0.1.0' })
+  Plug('nvim-treesitter/nvim-treesitter', {['do']= ':TSUpdate'})
   Plug 'nvim-lua/plenary.nvim'
   Plug 'akinsho/toggleterm.nvim'
 
@@ -17,6 +18,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   Plug 'jedrzejboczar/toggletasks.nvim'
   Plug 'mbbill/undotree'
   Plug 'TimUntersberger/neogit'
+  Plug 'rest-nvim/rest.nvim'
 
   -- Theme and ui
   Plug 'ghifarit53/tokyonight-vim'
@@ -56,4 +58,15 @@ vim.call('plug#end')
 
 require("toggleterm").setup({
   start_in_insert = false
+})
+
+require("neogit").setup({
+  disable_commit_confirmation = true,
+  kind = "tab",
+  commit_popup = {
+    kind = "replace"
+  },
+  popup = {
+    kind = "replace"
+  }
 })

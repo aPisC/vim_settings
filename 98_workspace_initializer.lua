@@ -33,7 +33,7 @@ function init_workspace(arg)
     return
   end
   os.execute("mkdir -p ./.vscode")
-  local file = io.open("./.vim/nvim.lua", "a+")
+  local file = io.open("./.vscode/nvim.lua", "a+")
   file:write("-- Insert " .. lang .. " configuration\n")
   file:write(workspaceFiles[lang])
   file:write("\n\n\n")
