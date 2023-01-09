@@ -31,14 +31,14 @@ vim.keymap.set({'n'     , 't'}, '<c-p>x', function() vim.cmd('q') end)
 
 
 -- LSP and Debugger keymaps
-vim.keymap.set('n', '<F12>', vim.lsp.buf.definition)
+vim.keymap.set('n', '<F12>', function() vim.cmd("Telescope lsp_definitions") end)
 vim.keymap.set('n', '<F24>', function() vim.cmd("Telescope lsp_references") end) -- <S-F12>
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
-vim.keymap.set('n', 'gr', vim.lsp.buf.references)
-vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
-vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help)
+vim.keymap.set('n', 'gd', function() vim.cmd("Telescope lsp_definitions") end)
+vim.keymap.set('n', 'gr', function() vim.cmd("Telescope lsp_references") end)
+vim.keymap.set('n', 'gi', function() vim.cmd("Telescope lsp_implementations") end)
+vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help)
 vim.keymap.set('n', '<F2>', vim.lsp.buf.rename)
-vim.keymap.set('n', '?', vim.lsp.buf.code_action)
+vim.keymap.set('n', '<C-space>', vim.lsp.buf.code_action)
 
 vim.keymap.set({'n', 'i'}, "<F5>", function() require("dap").continue() end)
 vim.keymap.set({'n', 'i'}, "<F17>", function() require("dap").terminate() end) -- <S-F5>
@@ -61,10 +61,12 @@ end)
 vim.keymap.set({'n', 'i'}, "<F10>", function() require("dap").step_over() end)
 vim.keymap.set({'n', 'i'}, "<F11>", function() require("dap").step_into() end)
 vim.keymap.set({'n', 'i'}, "<F23>", function() require("dap").step_out() end) -- <S-F11>
-
+vim.keymap.set({'n'     }, "<space>K", vim.diagnostic.open_float)
 vim.keymap.set('n', 'K', function(args)
   if require("dap").session() then
     require("dap.ui.widgets").hover()
+  elseif #vim.diagnostic.get(0, {lnum = vim.api.nvim_win_get_cursor(0)[1] - 1} ) > 0 then
+    vim.diagnostic.open_float()
   else
     vim.lsp.buf.hover(args)
   end
@@ -72,16 +74,27 @@ end)
 
 
 -- Editing keymaps
-vim.keymap.set({'n', 'i'     }, '<C-s>', function() vim.cmd("w") end)
+vim.keymap.set({'n', 'i'     }, '<C-s>', function() 
+  local tries = 0
+  while tries < 10 and vim.api.nvim_get_mode().mode == "i" do
+    vim.api.nvim_input("<esc>")
+    tries = tries + 1
+  end  
+  vim.api.nvim_input(":w<cr>")
+end)
 vim.keymap.set({          't'}, '<c-w>', '<C-\\><c-n>')
 vim.keymap.set({'n'          }, '<C-d>', '<C-d>zz')
 vim.keymap.set({'n'          }, '<C-u>', '<C-u>zz')
+vim.keymap.set({'n'          }, '<C-o>', '<C-o>zz')
+vim.keymap.set({'n'          }, '<C-i>', '<C-i>zz')
 vim.keymap.set({'n'          }, 'cp', 'viwpgvy')
 vim.keymap.set({'n'          }, 'cP', 'viWpgvy')
 vim.keymap.set({'v'          }, 'p', 'pgvy')
 vim.keymap.set({     'i', 'v'}, '<C-z>', function() 
   vim.cmd('undo')
-  if vim.api.nvim_get_mode().mode ~= "i" then vim.api.nvim_input("<esc>i") end  
+  if vim.api.nvim_get_mode().mode ~= "i" then
+    vim.api.nvim_input("<esc>i") 
+  end  
 end)
 vim.keymap.set({     'i', 'v'}, '<C-y>', function() vim.cmd('redo') end)
 
@@ -105,4 +118,30 @@ vim.keymap.set({'v'          }, '<S-Right>', 'l')
 vim.keymap.set({'v'          }, '<C-S-Left>', 'b')
 vim.keymap.set({'v'          }, '<C-S-Right>', 'e')
 
+vim.keymap.set({'n', 'i'     }, '<A-down>', function() vim.cmd("move +1") end)
+vim.keymap.set({'n', 'i'     }, '<A-j>', function() vim.cmd("move +1") end)
+vim.keymap.set({'n', 'i'     }, '<A-up>', function() vim.cmd("move -2") end)
+vim.keymap.set({'n', 'i'     }, '<A-k>', function() vim.cmd("move -2") end)
+vim.keymap.set({'v'          }, '<A-down>', ":m '>+1<CR>gv=gv")
+vim.keymap.set({'v'          }, '<A-j>',  ":m '>+1<CR>gv=gv")
+vim.keymap.set({'v'          }, '<A-up>', ":m '<-2<CR>gv=gv")
+vim.keymap.set({'v'          }, '<A-k>',  ":m '<-2<CR>gv=gv")
+
 vim.keymap.set('',              '<esc>', ':noh <cr>', {remap = true})
+
+-- HU keymaps
+vim.keymap.set({'n',      'v'}, 'ő', '[', {remap=true})
+vim.keymap.set({'n',      'v'}, 'Ő', '{', {remap=true})
+vim.keymap.set({'n',      'v'}, 'ú', ']', {remap=true})
+vim.keymap.set({'n',      'v'}, 'Ú', '}', {remap=true})
+vim.keymap.set({'n',      'v'}, 'ó', '=', {remap=true})
+vim.keymap.set({'n',      'v'}, 'í', '`', {remap=true})
+vim.keymap.set({'n',      'v'}, 'Í', '~', {remap=true})
+vim.keymap.set({'n',      'v'}, 'é', ";", {remap=true})
+vim.keymap.set({'n',      'v'}, 'É', ':', {remap=true})
+vim.keymap.set({'n',      'v'}, 'á', "'", {remap=true})
+vim.keymap.set({'n',      'v'}, 'Á', '"', {remap=true})
+vim.keymap.set({'n',      'v'}, 'ű', "\\", {remap=true})
+vim.keymap.set({'n',      'v'}, 'Ű', '|', {remap=true})
+vim.keymap.set({'n',      'v'}, '_', '/', {remap=true})
+

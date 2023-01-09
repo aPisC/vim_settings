@@ -5,6 +5,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   Plug('nvim-treesitter/nvim-treesitter', {['do']= ':TSUpdate'})
   Plug 'nvim-lua/plenary.nvim'
   Plug 'akinsho/toggleterm.nvim'
+  Plug 'smiteshp/nvim-navic'
 
   -- Editor plugins    
   Plug 'tpope/vim-sensible'
@@ -19,9 +20,12 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   Plug 'mbbill/undotree'
   Plug 'TimUntersberger/neogit'
   Plug 'rest-nvim/rest.nvim'
+  Plug 'utilyre/barbecue.nvim'
+  Plug 'm4xshen/autoclose.nvim'
 
   -- Theme and ui
-  Plug 'ghifarit53/tokyonight-vim'
+  -- Plug 'ghifarit53/tokyonight-vim'
+  Plug('folke/tokyonight.nvim', { branch = 'main' })
   Plug 'junegunn/goyo.vim'
   Plug 'preservim/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -46,7 +50,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   Plug 'rcarriga/nvim-dap-ui'
   Plug('mxsdev/nvim-dap-vscode-js')
   Plug('microsoft/vscode-js-debug', {['do'] = "npm install --legacy-peer-deps && npm run compile"})
-  Plug 'kyazdani42/nvim-web-devicons'
+  -- Plug 'kyazdani42/nvim-web-devicons'
   Plug 'folke/trouble.nvim'
 
   -- Scala lang plugin
@@ -64,9 +68,25 @@ require("neogit").setup({
   disable_commit_confirmation = true,
   kind = "tab",
   commit_popup = {
-    kind = "replace"
+    kind = "tab"
   },
   popup = {
     kind = "replace"
   }
 })
+
+
+
+require('barbecue').setup({
+  theme='tokyonight',
+  icons=false
+})
+
+require "lsp_signature".setup({
+  close_timeout = 400,
+  floating_window = true,
+  padding = ' ',
+  select_signature_key = "<C-k>",
+})
+
+require("autoclose").setup({ })
