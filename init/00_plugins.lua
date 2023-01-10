@@ -90,3 +90,7 @@ require "lsp_signature".setup({
 })
 
 require("autoclose").setup({ })
+
+require("autoformat").setup({
+  scala=true
+})

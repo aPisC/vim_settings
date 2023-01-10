@@ -20,7 +20,7 @@ vim.keymap.set({'n', 'i', 't'}, '<c-p>e', function() vim.cmd('Telescope diagnost
 vim.keymap.set({'n', 'i', 't'}, '<c-p>gc', function() vim.cmd('Telescope git_commits') end)
 vim.keymap.set({'n', 'i', 't'}, '<c-p>gb', function() vim.cmd('Telescope git_branches') end)
 vim.keymap.set({'n', 'i', 't'}, "<C-p>b", function() vim.cmd("Telescope toggletasks spawn") end)
-vim.keymap.set({'n', 'i', 't'}, "<C-p>bb", function() vim.cmd("Telescope toggletasks select") end)
+vim.keymap.set({'n', 'i', 't'}, "<C-p>B", function() vim.cmd("Telescope toggletasks select") end)
 
 vim.keymap.set({'n', 'i', 't'}, "<C-p>t", function() if vim.v.count > 0 then vim.cmd("ToggleTerm " .. vim.v.count) else vim.cmd("ToggleTerm") end end)
 vim.keymap.set({'n', 'i', 't'}, '<c-p>g', function() require("neogit").open()  end)
@@ -82,6 +82,7 @@ vim.keymap.set({'n', 'i'     }, '<C-s>', function()
   end  
   vim.api.nvim_input(":w<cr>")
 end)
+vim.keymap.set({'n', 'i', 't', 'v'}, '<C-q>', function() vim.cmd('q') end)
 vim.keymap.set({          't'}, '<c-w>', '<C-\\><c-n>')
 vim.keymap.set({'n'          }, '<C-d>', '<C-d>zz')
 vim.keymap.set({'n'          }, '<C-u>', '<C-u>zz')
@@ -143,5 +144,4 @@ vim.keymap.set({'n',      'v'}, 'á', "'", {remap=true})
 vim.keymap.set({'n',      'v'}, 'Á', '"', {remap=true})
 vim.keymap.set({'n',      'v'}, 'ű', "\\", {remap=true})
 vim.keymap.set({'n',      'v'}, 'Ű', '|', {remap=true})
-vim.keymap.set({'n',      'v'}, '_', '/', {remap=true})
 
